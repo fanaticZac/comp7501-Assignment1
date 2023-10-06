@@ -16,23 +16,14 @@ public class PlayerLeft : MonoBehaviour
     private void OnEnable()
     {
         movement.Enable();
-        //create a DoJump callback function
-        //DoJump automatically called when Jump binding performed
-        // inputActions.LeftPlayer.Jump.performed += DoJump;
-        // inputActions.LeftPlayer.Jump.Enable();
     }
 
     //called when script disabled
     private void OnDisable()
     {
         movement.Disable();
-        // inputActions.LeftPlayer.Jump.performed -= DoJump;
-        // inputActions.LeftPlayer.Jump.Disable();
     }
-    // private void DoJump(InputAction.CallbackContext obj)
-    // {
-    // Debug.Log("Jump"); //called when jump performed
-    // }
+
     //called every physics update
     private void FixedUpdate()
     {

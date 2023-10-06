@@ -16,24 +16,16 @@ public class PlayerRight : MonoBehaviour
     private void OnEnable()
     {
         movement.Enable();
-        //create a DoJump callback function
-        //DoJump automatically called when Jump binding performed
-        // inputActions.LeftPlayer.Jump.performed += DoJump;
-        // inputActions.LeftPlayer.Jump.Enable();
+
     }
 
     //called when script disabled
     private void OnDisable()
     {
         movement.Disable();
-        // inputActions.LeftPlayer.Jump.performed -= DoJump;
-        // inputActions.LeftPlayer.Jump.Disable();
+
     }
-    // private void DoJump(InputAction.CallbackContext obj)
-    // {
-    // Debug.Log("Jump"); //called when jump performed
-    // }
-    //called every physics update
+
     private void FixedUpdate()
     {
         Vector2 v2 = movement.ReadValue<Vector2>(); //extract 2d input data
@@ -41,5 +33,7 @@ public class PlayerRight : MonoBehaviour
         Vector3 v3 = new Vector3(0, v2.y, 0); //convert to 3d space
                                                  // transform.Translate(v3); //moves transform, ignoring physics
         rb.AddForce(v3, ForceMode.VelocityChange); //apply instant physics force, ignoring mass
+
+
     }
 }
