@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class BallBehavior : MonoBehaviour
 {
     private Vector3 direction;
     private float speed;
+    
+    private GameObject Ready;
  
     // Use this for initialization
     void Start ()
     {
-        Invoke("RestartBall", 2);
+        Ready = GameObject.Find("ReadyPrompt");
+        Invoke("RestartBall", 3);
     }
 
  
@@ -22,15 +27,40 @@ public class BallBehavior : MonoBehaviour
 
     void RestartBall()
     {
-        // rb.velocity = Vector3.zero;
+        Ready.GetComponent<TextMeshProUGUI>().text = "";
+
         transform.position = Vector3.zero;
-                // Generate random values for X and Z axes separately within your desired range.
         float randomX = Random.Range(-1.0f, 1.0f);
         float randomY = Random.Range(-1.0f, 1.0f);
 
-        // Create the direction vector using the random values and normalize it.
         direction = new Vector3(randomX, randomY, 0.0f ).normalized;
         this.speed = 0.1f;
+    }
+
+    private void LastSecondTextChange (){
+        Ready.GetComponent<TextMeshProUGUI>().text = "Go!";
+        Invoke("RestartBall", 1);
+    }
+    public void StopEntirely(){
+        // Set the ball's velocity to zero to stop it.
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+
+        // Reset the ball's position and invoke the ResetBall function to restart it.
+        transform.position = Vector3.zero;
+        this.speed = 0.0f;
+    }
+
+    public void StopBall()
+    {
+        // Set the ball's velocity to zero to stop it.
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+
+        // Reset the ball's position and invoke the ResetBall function to restart it.
+        transform.position = Vector3.zero;
+        Invoke("LastSecondTextChange", 1);
+        this.speed = 0.0f;
     }
 
     void OnCollisionEnter(Collision collision)

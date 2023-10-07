@@ -351,6 +351,7 @@
 -analyzer:"/home/user/Unity/Hub/Editor/2022.3.10f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/home/user/Unity/Hub/Editor/2022.3.10f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/BallBehavior.cs"
+"Assets/BallCollisionWall.cs"
 "Assets/InputActions.cs"
 "Assets/PlayerLeft.cs"
 "Assets/PlayerRight.cs"

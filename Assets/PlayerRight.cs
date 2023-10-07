@@ -16,14 +16,12 @@ public class PlayerRight : MonoBehaviour
     private void OnEnable()
     {
         movement.Enable();
-
     }
 
     //called when script disabled
     private void OnDisable()
     {
         movement.Disable();
-
     }
 
     private void FixedUpdate()
@@ -33,7 +31,5 @@ public class PlayerRight : MonoBehaviour
         Vector3 v3 = new Vector3(0, v2.y, 0); //convert to 3d space
                                                  // transform.Translate(v3); //moves transform, ignoring physics
         rb.AddForce(v3, ForceMode.VelocityChange); //apply instant physics force, ignoring mass
-
-
     }
 }
